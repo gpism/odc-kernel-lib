@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- Define the root logger -->
+    <root>
+        <priority value="DEBUG" />
+        <appender-ref ref="ConsoleAppender" />
+        <appender-ref ref="RollingFileAppender" />
+    </root>
+
+    <!-- Define the ConsoleAppender -->
+    <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" /> <!-- Output log messages to the console -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c{1} - %m%n" />
+        </layout>
+    </appender>
+
+    <!-- Define the RollingFileAppender -->
+    <appender name="RollingFileAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="logs/app.log" />
+        <param name="MaxFileSize" value="10MB" /> <!-- Set the maximum size of each log file -->
+        <param name="MaxBackupIndex" value="10" /> <!-- Number of log files to keep (including the current file) -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %-5p %c{1} - %m%n" />
+        </layout>
+    </appender>
+
+</log4j:configuration>
